@@ -3,6 +3,7 @@ import ItemList from '../ItemList/ItemList';
 import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
 import styles from './App.module.css';
+import 'fontsource-roboto';
 
 const App = () => {
   const items = [

@@ -37,6 +37,8 @@
   },
   "devDependencies": {
     "@material-ui/core": "^4.11.2",
-    "classnames": "^2.2.6"
+    "@material-ui/icons": "^4.11.2",
+    "classnames": "^2.2.6",
+    "fontsource-roboto": "^3.0.3"
   }
 }
