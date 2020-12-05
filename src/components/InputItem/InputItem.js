@@ -1,9 +1,6 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import styles from './InputItem.module.css';
-import brown from '@material-ui/core/colors/brown';
-
-const color = brown['200'];
 
 const InputItem = () => (
   <div className={styles.wrap}>
