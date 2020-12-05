@@ -6,8 +6,8 @@ import styles from './App.module.css';
 import 'fontsource-roboto';
 
 class App extends React.Component {
-  render() {
-    const items = [
+  state = {
+    items: [
       {
         value: 'Купить продукты',
         isDone: false
@@ -20,16 +20,16 @@ class App extends React.Component {
         value: 'Постирать кроссовки',
         isDone: true
       }
-    ];
-
+    ]
+  };
+  render() {
     return (
       <div className={styles.container}>
         <h1 className={styles.title}>Todos</h1>
         <InputItem />
-        <ItemList items={items} />
+        <ItemList items={this.state.items} />
         <Footer count={3} />
       </div>);
-
   }
 }
 
