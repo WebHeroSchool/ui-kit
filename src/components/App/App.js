@@ -43,7 +43,7 @@ class App extends React.Component {
         <h1 className={styles.title}>Todos</h1>
         <InputItem />
         <ItemList items={this.state.items} onClickDone={this.onClickDone} />
-        <Footer count={this.state.count} onClickFooter={this.onClickFooter} />
+        <Footer count={3} />
       </div>);
   }
 }
