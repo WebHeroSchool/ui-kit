@@ -10,27 +10,47 @@ class App extends React.Component {
     items: [
       {
         value: 'Купить продукты',
-        isDone: false
+        isDone: false,
+        id: 1
       },
       {
         value: 'Заправить машину',
-        isDone: false
+        isDone: false,
+        id: 2
       },
       {
         value: 'Постирать кроссовки',
-        isDone: true
+        isDone: true,
+        id: 3
       }
     ]
   };
 
-  onClickDone = isDone => console.log(isDone);
+  onClickDone = id => {
+    const newItemListDone = this.state.items.map(item => {
+      const newItem = { ...item };
+      if (item.id === id) {
+        newItem.isDone = !item.isDone;
+      }
+      return newItem;
+    });
+    this.setState({ items: newItemListDone });
+  };
+
+  onClickDelete = id => {
+    const deleteItems = this.state.items.filter(item => item.id !== id);
+    this.setState({ items: deleteItems });
+  };
 
   render() {
     return (
       <div className={styles.container}>
         <h1 className={styles.title}>Todos</h1>
         <InputItem />
-        <ItemList items={this.state.items} onClickDone={this.onClickDone} />
+        <ItemList
+          items={this.state.items}
+          onClickDone={this.onClickDone}
+          onClickDelete={this.onClickDelete} />
         <Footer count={3} />
       </div>);
   }
