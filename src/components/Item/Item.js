@@ -5,11 +5,11 @@ import 'fontsource-roboto';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Checkbox from '@material-ui/core/Checkbox';
 
-const Item = ({ value, isDone, onClickDone }) => (
+const Item = ({ value, isDone, onClickDone, id }) => (
   <div className={styles.wrap}>
     <Checkbox
       checked={isDone}
-      onClick={() => console.log(isDone)}
+      onClick={() => onClickDone(id)}
     /><span className={
       classnames({
         [styles.item]: true,
