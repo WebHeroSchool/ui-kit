@@ -15,6 +15,7 @@ const ItemList = ({ items, onClickDone, onClickDelete }) => (
         id={item.id}
       />
     </li>)}
-  </ul>);
+  </ul>
+);
 
 export default ItemList;

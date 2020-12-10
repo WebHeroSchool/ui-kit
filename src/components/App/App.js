@@ -20,7 +20,7 @@ class App extends React.Component {
       },
       {
         value: 'Постирать кроссовки',
-        isDone: true,
+        isDone: false,
         id: 3
       }
     ],
@@ -65,7 +65,7 @@ class App extends React.Component {
           items={this.state.items}
           onClickDone={this.onClickDone}
           onClickDelete={this.onClickDelete} />
-        <Footer count={3} />
+        <Footer />
       </div>);
   }
 }
