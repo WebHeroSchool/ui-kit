@@ -4,6 +4,7 @@ import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
 import styles from './App.module.css';
 import 'fontsource-roboto';
+import PropTypes from 'prop-types'
 
 class App extends React.Component {
   state = {
@@ -69,5 +70,14 @@ class App extends React.Component {
       </div>);
   }
 }
+
+App.propTypes = {
+  isDone: PropTypes.bool,
+  id: PropTypes.number
+}
+
+App.defaultProps = {
+  isDone: false
+};
 
 export default App;

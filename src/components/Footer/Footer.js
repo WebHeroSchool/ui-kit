@@ -1,5 +1,6 @@
 import React from 'react';
 import 'fontsource-roboto';
+import PropTypes from 'prop-types'
 import styles from './Footer.module.css';
 
 const Footer = ({ count }) => (
@@ -9,5 +10,9 @@ const Footer = ({ count }) => (
 Footer.defaultProps = {
   count: 2
 };
+
+Footer.propTypes = {
+  count: PropTypes.number
+}
 
 export default Footer;
