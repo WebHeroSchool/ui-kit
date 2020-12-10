@@ -8,7 +8,7 @@ class InputItem extends React.Component {
     inputValue: '',
     error: false,
     errorMessage: '',
-    inputLebel: 'Добавить задание'
+    inputLebel: 'Добавить задание',
   };
 
   error = (message) => {
@@ -16,6 +16,7 @@ class InputItem extends React.Component {
       errorMessage: message,
       error: true,
       inputLebel: "Ошибка",
+
     })
   }
 
@@ -35,6 +36,7 @@ class InputItem extends React.Component {
     return (
       <div className={styles.wrap}>
         <TextField
+          error={this.state.error}
           id="filled-password-input"
           helperText={this.state.errorMessage}
           label={this.state.inputLebel}
