@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ItemList from '../ItemList/ItemList';
 import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
@@ -6,70 +6,76 @@ import styles from './App.module.css';
 import 'fontsource-roboto';
 import PropTypes from 'prop-types'
 
-class App extends React.Component {
-  state = {
+const App = () => {
+  const state = {
     items: [
       {
-        value: 'Купить продукты',
+        value: 'first todo',
         isDone: false,
         id: 1
       },
       {
-        value: 'Заправить машину',
+        value: 'second todo',
         isDone: false,
         id: 2
-      },
-      {
-        value: 'Постирать кроссовки',
-        isDone: false,
-        id: 3
-      }
-    ],
+      }],
     count: 3
-  };
+  }
 
-  onClickDone = id => {
-    const newItemListDone = this.state.items.map(item => {
+  const [items, setItems] = useState(state.items);
+  const [count, setCount] = useState(state.count);
+
+  useEffect(() => {
+    console.log("componentDidUpdate")
+  });
+
+  useEffect(() => {
+    console.log("componentDidMount")
+  }, []);
+
+  const onClickDone = id => {
+    const newItemListDone = items.map(item => {
       const newItem = { ...item };
       if (item.id === id) {
-        newItem.isDone = !item.isDone;
+        newItem.isDone = !newItem.isDone;
       }
       return newItem;
     });
-    this.setState({ items: newItemListDone });
+    setItems(newItemListDone);
   };
 
-  onClickDelete = id => {
-    const deleteItems = this.state.items.filter(item => item.id !== id);
-    this.setState({ items: deleteItems });
+  const onClickDelete = id => {
+    const deleteItems = items.filter(item => item.id !== id);
+    setItems(deleteItems);
   };
 
-  onClickAdd = value => this.setState(state => ({
-    items: [
-      ...state.items,
+  const onClickAdd = value => {
+    const newItemListAdd = [
+      ...items,
       {
         value,
         isDone: false,
-        id: state.count + 1
+        id: count + 1
       }
-    ],
-    count: state.count + 1
-  }));
+    ];
 
-  render() {
-    return (
-      <div className={styles.container}>
-        <h1 className={styles.title}>Todos</h1>
-        <InputItem
-          onClickAdd={this.onClickAdd} />
-        <ItemList
-          items={this.state.items}
-          onClickDone={this.onClickDone}
-          onClickDelete={this.onClickDelete} />
-        <Footer />
-      </div>);
-  }
+    setItems(newItemListAdd);
+    setCount((count) => count + 1);
+  };
+
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.title}>Todos</h1>
+      <InputItem
+        onClickAdd={onClickAdd} />
+      <ItemList
+        items={items}
+        onClickDone={onClickDone}
+        onClickDelete={onClickDelete} />
+      <Footer />
+    </div>);
 }
+
 
 App.propTypes = {
   isDone: PropTypes.bool,
