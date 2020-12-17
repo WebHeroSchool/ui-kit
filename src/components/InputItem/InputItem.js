@@ -8,14 +8,14 @@ class InputItem extends React.Component {
     inputValue: '',
     error: false,
     errorMessage: '',
-    inputLebel: 'Добавить задание',
+    inputLebel: 'Add Task',
   };
 
   error = (message) => {
     this.setState({
       errorMessage: message,
       error: true,
-      inputLebel: "Ошибка",
+      inputLebel: "ERROR",
 
     })
   }
@@ -55,18 +55,18 @@ class InputItem extends React.Component {
                 onClickAdd(this.state.inputValue);
                 this.setState({
                   error: false,
-                  inputLebel: 'Добавить задание',
+                  inputLebel: 'Add Task',
                   inputValue: '',
                   errorMessage: ''
                 })
               }
 
               if (this.state.inputValue === '') {
-                this.error('Ты не можешь добавить пустое поле')
+                this.error("You can't add an empty field")
               }
             }}
           >
-            Добавить
+            ADD
               </Button>
         </div>
       </div >

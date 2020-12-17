@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import styles from './Footer.module.css';
 
 const Footer = ({ count }) => (
-  <div className={styles.task}>Осталось выполнить вот столько дел: {count}</div>
+  <div className={styles.task}>How many things to do: {count}</div>
 );
 
 Footer.defaultProps = {
