@@ -1,40 +1,16 @@
-
-@keyframes preloader {
-  0% { transform: rotate(0deg) }
-  50% { transform: rotate(180deg) }
-  100% { transform: rotate(360deg) }
+.link {
+  display: block;
+  font-size: 18px;
 }
 
-.elipse {
-  width: 200px;
-  height: 200px;
-  display: inline-block;
-  overflow: hidden;
-  background: transparent;
+.title,
+.link,
+.list,
+.subtitle{
+  font-family: 'Roboto', sans-serif;
 }
 
-
-.ldio {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform: translateZ(0) scale(1);
-  backface-visibility: hidden;
-  transform-origin: 0 0;
-}
-
-.ldio div {
-  position: absolute;
-  animation: preloader 1s linear infinite;
-  width: 160px;
-  height: 160px;
-  top: 20px;
-  left: 20px;
-  border-radius: 50%;
-  box-shadow: 0 4px 0 0 #e42f59;
-  transform-origin: 80px 82px;
-}
-
-.ldio div {
-  box-sizing: content-box;
+.list {
+  margin-bottom: 15px;
+  font-size: 22px;
 }
