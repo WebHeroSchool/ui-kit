@@ -65,6 +65,7 @@ const Todo = () => {
     return items;
   };
 
+
   const onClickFilter = (name) => {
     setFilter(name)
   };
