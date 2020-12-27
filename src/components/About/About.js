@@ -29,6 +29,7 @@ class About extends React.Component {
         fetchReposFailure: true,
         error: error
       })
+
     });
 
     octokit.users.getByUsername({
@@ -36,7 +37,9 @@ class About extends React.Component {
     }).then(response => {
       this.setState({
         userAvatar: response.data.avatar_url,
-        name: response.data.login
+        name: response.data.login,
+        bio: response.data.bio,
+        gitUrl: response.data.html_url
       })
     }).catch(err => {
       this.setState({
@@ -48,20 +51,26 @@ class About extends React.Component {
 
 
   render() {
-    const { isLoading, fetchReposRequest, name, userAvatar, fetchReposFailure, error } = this.state;
+    const { isLoading, fetchReposRequest, name, userAvatar, fetchReposFailure, error, bio, gitUrl } = this.state;
     return (
       <CardContent>
-        <h1 className={styles.title}>{isLoading ? <CircularProgress color="secondary" /> : 'My repositories'}</h1>
-        <h2 className={styles.subtitle}>My name is {name}</h2>
-        <img src={userAvatar} alt="Аватар" />
-        {!fetchReposFailure && <div>{error.message}</div>}
-        {!isLoading && <ol>
-          {fetchReposRequest.map(repo => (<li className={styles.list} key={repo.id}>
-            {repo.name}
-            <a className={styles.link} href={repo.html_url}>Link on GitHub</a>
-            <a className={styles.link} href={repo.homepage}>Link on project</a>
-          </li>))}
-        </ol>}
+        <div className={styles.wrap}>
+          <h2 className={styles.subtitle}>My name is {name}</h2>
+          <h3 className={styles.title}>{bio}</h3>
+          <a className={styles.github_link} href={gitUrl} src=" gitHub link">Link on my GitHub</a>
+          <img className={styles.avatar} src={userAvatar} alt="Аватар" />
+          <h1 className={styles.title}>{isLoading ? <CircularProgress color="secondary" /> : 'My repositories'}</h1>
+          {!fetchReposFailure && <div>{error.message}</div>}
+          {!isLoading && <ol>
+            {fetchReposRequest.map(repo => (<li className={styles.list} key={repo.id}>
+              <div className={styles.name}>{repo.name}</div>
+              <div className={styles.description}>{repo.description}</div>
+              <a className={styles.link} href={repo.html_url}>Link on GitHub</a>
+              <a className={styles.link} href={repo.homepage}>Link on project</a>
+            </li>))}
+          </ol>}
+          <h4 className={styles.author}>Developed by WebHeroSchool</h4>
+        </div>
       </CardContent>
     );
   }

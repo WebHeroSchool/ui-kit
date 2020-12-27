@@ -31,7 +31,7 @@ class InputItem extends React.Component {
 
 
   render() {
-    const { onClickAdd } = this.props;
+    const { onClickAdd, items } = this.props;
 
     return (
       <div className={styles.wrap}>
@@ -51,18 +51,30 @@ class InputItem extends React.Component {
             color="secondary"
             fullWidth
             onClick={() => {
-              if (this.state.inputValue !== '') {
+              let check = false;
+
+              items.forEach((items) => {
+                if (this.state.inputValue === items.value) {
+                  check = true;
+                }
+              });
+
+              if (this.state.inputValue !== '' && !check) {
                 onClickAdd(this.state.inputValue);
                 this.setState({
                   error: false,
                   inputLebel: 'Add Task',
                   inputValue: '',
                   errorMessage: ''
-                })
-              }
+                });
 
-              if (this.state.inputValue === '') {
+              } else if (this.state.inputValue === '') {
                 this.error("You can't add an empty field")
+              } else if (check) {
+                this.error("Such a task already exists");
+                this.setState({
+                  inputValue: ''
+                });
               }
             }}
           >

@@ -4,27 +4,27 @@ import Todo from '../Todo/Todo';
 import About from '../About/About';
 import Contacts from '../Contacts/Contacts';
 import styles from './App.module.css';
-import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import Card from '@material-ui/core/Card';
+import 'fontsource-roboto';
+import CardContent from '@material-ui/core/CardContent';
 
 const App = () =>
 (<Router>
   <div className={styles.container} >
-    <Card className={styles.sidebar}>
-      <MenuList>
-        <Link to='/' className={styles.link}><MenuItem>ABOUT</MenuItem></Link>
-        <Link to='/todo' className={styles.link}><MenuItem>TODO</MenuItem></Link>
-        <Link to='/contacts' className={styles.link}><MenuItem>CONTACTS</MenuItem></Link>
-      </MenuList>
+    <Card>
+      <nav className={styles.nav}>
+        <Link to='/' className={styles.link}><div className={styles.link_item}>ABOUT</div></Link>
+        <Link to='/todo' className={styles.link}><div className={styles.link_item}>TODO</div></Link>
+        <Link to='/contacts' className={styles.link}><div className={styles.link_item}>CONTACTS</div></Link>
+      </nav>
     </Card>
 
-    <Card className={styles.content}>
+    <Card>
       <Route path='/' exact component={About} />
       <Route path='/todo' component={Todo} />
       <Route path='/contacts' component={Contacts} />
     </Card>
-
   </div >
 </Router>);
 

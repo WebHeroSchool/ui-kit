@@ -5,10 +5,9 @@ body {
 
 .container {
   margin: auto;
-  width: 500px;
+  width: 70%;
   background-color: #fff;
   padding: 20px;
-  box-shadow: -1px 0px 20px 0px #00000026;
 }
 
 .title {
@@ -19,4 +18,10 @@ body {
   font-size: 60px;
   color: #e4dbda;
   margin-top: 20px;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 750px) {
+  .container {
+    width: 90%;
+  }
 }
