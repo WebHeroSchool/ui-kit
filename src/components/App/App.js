@@ -4,10 +4,8 @@ import Todo from '../Todo/Todo';
 import About from '../About/About';
 import Contacts from '../Contacts/Contacts';
 import styles from './App.module.css';
-import MenuList from '@material-ui/core/MenuList';
 import Card from '@material-ui/core/Card';
 import 'fontsource-roboto';
-import CardContent from '@material-ui/core/CardContent';
 
 const App = () =>
 (<Router>
