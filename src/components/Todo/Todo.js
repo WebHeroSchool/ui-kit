@@ -7,32 +7,25 @@ import 'fontsource-roboto';
 import PropTypes from 'prop-types';
 import CardContent from '@material-ui/core/CardContent';
 
+
 const Todo = () => {
   const state = {
     items: [
       {
-        value: 'first todo',
+        value: 'Task',
         isDone: false,
-        id: 1
-      },
-      {
-        value: 'second todo',
-        isDone: false,
-        id: 2
+        id: 0
       }],
-    count: 3
+    count: 1,
+    counter: 1,
+    filter: 'all'
   }
 
   const [items, setItems] = useState(state.items);
   const [count, setCount] = useState(state.count);
+  const [filter, setFilter] = useState(state.filter);
+  const [counter, setCounter] = useState(state.counter);
 
-  useEffect(() => {
-    console.log("componentDidUpdate")
-  });
-
-  useEffect(() => {
-    console.log("componentDidMount")
-  }, []);
 
   const onClickDone = id => {
     const newItemListDone = items.map(item => {
@@ -48,6 +41,8 @@ const Todo = () => {
   const onClickDelete = id => {
     const deleteItems = items.filter(item => item.id !== id);
     setItems(deleteItems);
+    // setCount((count) => count - 1);
+    setCounter((counter) => counter - 1);
   };
 
   const onClickAdd = value => {
@@ -62,6 +57,21 @@ const Todo = () => {
 
     setItems(newItemListAdd);
     setCount((count) => count + 1);
+    setCounter((counter) => counter + 1);
+  };
+
+  const itemFilter = () => {
+    if (filter === 'active') {
+      return items.filter(item => !item.isDone);
+    } if (filter === 'done') {
+      return items.filter(item => item.isDone);
+    }
+    return items;
+  };
+
+
+  const onClickFilter = (name) => {
+    setFilter(name)
   };
 
   return (
@@ -69,12 +79,18 @@ const Todo = () => {
       <CardContent>
         <h1 className={styles.title}>Todos</h1>
         <InputItem
+          items={items}
           onClickAdd={onClickAdd} />
         <ItemList
           items={items}
           onClickDone={onClickDone}
-          onClickDelete={onClickDelete} />
-        <Footer />
+          onClickDelete={onClickDelete}
+          itemFilter={itemFilter} />
+        <Footer
+          count={count}
+          counter={counter}
+          onClickFilter={onClickFilter}
+        />
       </CardContent>
     </div >
   );
