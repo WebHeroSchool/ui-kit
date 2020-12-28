@@ -3,7 +3,7 @@ import 'fontsource-roboto';
 import PropTypes from 'prop-types'
 import styles from './Footer.module.css';
 
-const Footer = ({ count, onClickFilter }) => (
+const Footer = ({ count, counter, onClickFilter }) => (
   <div className={styles.wrap}>
     <div className={styles.wrap_state}>
       <button
@@ -21,7 +21,7 @@ const Footer = ({ count, onClickFilter }) => (
         onClick={() => onClickFilter('active')}
       >Active</button>
     </div>
-    <div className={styles.task}>How many things to do: {count}</div>
+    <div className={styles.task}>How many things to do: {counter}</div>
   </div>
 );
 

@@ -5,3 +5,4 @@
 [1213/224123.135:ERROR:exception_snapshot_win.cc(99)] thread ID 22816 not found in process
 [1213/224123.135:ERROR:exception_snapshot_win.cc(99)] thread ID 6596 not found in process
 [1223/215219.050:ERROR:directory_reader_win.cc(43)] FindFirstFile: Системе не удается найти указанный путь. (0x3)
+[1227/191701.951:ERROR:directory_reader_win.cc(43)] FindFirstFile: Системе не удается найти указанный путь. (0x3)

@@ -13,7 +13,7 @@ class About extends React.Component {
     fetchReposRequest: [],
     fetchReposFailure: false,
     userAvatar: [],
-    error: {}
+    error: ''
   }
 
   componentDidMount() {
@@ -27,7 +27,8 @@ class About extends React.Component {
     }).catch(error => {
       this.setState({
         fetchReposFailure: true,
-        error: error
+        isLoading: false,
+        error: 'Ошибка:' + error.name + ' ' + error.message
       })
 
     });
@@ -41,12 +42,7 @@ class About extends React.Component {
         bio: response.data.bio,
         gitUrl: response.data.html_url
       })
-    }).catch(err => {
-      this.setState({
-        isLoading: false,
-        isError: true
-      })
-    })
+    }).catch((err) => { console.log(err) });
   }
 
 
@@ -60,7 +56,7 @@ class About extends React.Component {
           <a className={styles.github_link} href={gitUrl} src=" gitHub link">Link on my GitHub</a>
           <img className={styles.avatar} src={userAvatar} alt="Аватар" />
           <h1 className={styles.title}>{isLoading ? <CircularProgress color="secondary" /> : 'My repositories'}</h1>
-          {!fetchReposFailure && <div>{error.message}</div>}
+          {!fetchReposFailure && <div>{error}</div>}
           {!isLoading && <ol>
             {fetchReposRequest.map(repo => (<li className={styles.list} key={repo.id}>
               <div className={styles.name}>{repo.name}</div>

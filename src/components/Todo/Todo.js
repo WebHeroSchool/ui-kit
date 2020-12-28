@@ -17,12 +17,14 @@ const Todo = () => {
         id: 0
       }],
     count: 1,
+    counter: 1,
     filter: 'all'
   }
 
   const [items, setItems] = useState(state.items);
   const [count, setCount] = useState(state.count);
   const [filter, setFilter] = useState(state.filter);
+  const [counter, setCounter] = useState(state.counter);
 
 
   const onClickDone = id => {
@@ -39,7 +41,8 @@ const Todo = () => {
   const onClickDelete = id => {
     const deleteItems = items.filter(item => item.id !== id);
     setItems(deleteItems);
-    setCount((count) => count - 1);
+    // setCount((count) => count - 1);
+    setCounter((counter) => counter - 1);
   };
 
   const onClickAdd = value => {
@@ -54,6 +57,7 @@ const Todo = () => {
 
     setItems(newItemListAdd);
     setCount((count) => count + 1);
+    setCounter((counter) => counter + 1);
   };
 
   const itemFilter = () => {
@@ -84,6 +88,7 @@ const Todo = () => {
           itemFilter={itemFilter} />
         <Footer
           count={count}
+          counter={counter}
           onClickFilter={onClickFilter}
         />
       </CardContent>
